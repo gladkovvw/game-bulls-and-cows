@@ -1,6 +1,7 @@
-import random 
+import random
+import time
 
-def main_game_medium():
+def main_game_medium(start_time):
     mechanical_digits = ""
     while len(mechanical_digits) != 4:
         random_digit = str(random.randint(0,9))
@@ -40,9 +41,15 @@ def main_game_medium():
                 print(f'быки: {bulls}')
                 print(f'попыток: {count}')
             else:
-                return print(f'вы выйграли!!! ваше количество попыток: {count}')
+                elapsed = time.time() - start_time
+                minutes = int(elapsed // 60)
+                seconds = int(elapsed % 60)
+                print("~" * 100)
+                print(f'вы выйграли!!! ваше количество попыток: {count}')
+                print(f'Ваше время: Минуты - {minutes}, Секунды - {seconds}')
+                print("~" * 100)
 
-def main_game_easy():
+def main_game_easy(start_time):
     mechanical_digits = ""
     while len(mechanical_digits) != 3:
         random_digit = str(random.randint(0,9))
@@ -82,9 +89,15 @@ def main_game_easy():
                 print(f'быки: {bulls}')
                 print(f'попыток: {count}')
             else:
-                return print(f'вы выйграли!!! ваше количество попыток: {count}')
+                elapsed = time.time() - start_time
+                minutes = int(elapsed // 60)
+                seconds = int(elapsed % 60)
+                print("~" * 100)
+                print(f'вы выйграли!!! ваше количество попыток: {count}')
+                print(f'Ваше время: Минуты - {minutes}, Секунды - {seconds}')
+                print("~" * 100)
 
-def main_game_hard():
+def main_game_hard(start_time):
     mechanical_digits = ""
     while len(mechanical_digits) != 5:
         random_digit = str(random.randint(0,9))
@@ -124,14 +137,21 @@ def main_game_hard():
                     print(f'быки: {bulls}')
                     print(f'попыток: {count}')
                 else:
-                    return print(f'вы выйграли!!! ваше количество попыток: {count}')
-
+                    elapsed = time.time() - start_time
+                    minutes = int(elapsed // 60)
+                    seconds = int(elapsed % 60)
+                    print("~" * 100)
+                    print(f'вы выйграли!!! ваше количество попыток: {count}')
+                    print(f'Ваше время: Минуты - {minutes}, Секунды - {seconds}')
+                    print("~" * 100)
 def change_the_difficulty():
+    start_time = time.time()
     user_changer = input('введите уровень сложности:')
     if user_changer == 'легкая':
-        main_game_easy()
+        main_game_easy(start_time)
     if user_changer == 'средняя':
-        main_game_medium()
+        main_game_medium(start_time)
     if user_changer == 'сложная':
-        main_game_hard()
+        main_game_hard(start_time)
+
 change_the_difficulty()
